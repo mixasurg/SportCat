@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+        <style type="text/css">
+            html { height: 100% }
+            body { height: 100%; margin: 0; padding: 0 }
+            #map-canvas { height: 100% }
+        </style>
+         <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
+        <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRcppO3eEB3DpsZuH6LDIdRA-yElLEPYI&callback=initMap" async defer></script>
+        <script type="text/javascript">
+            var map;
+            let markers = [];
+            let markerCluster;
+            const myLatLng = {lat: 55.10806033311338, lng: 36.606742884436514};
+            function initMap() {
+                map = new google.maps.Map(document.getElementById("map-canvas"), {
+                    zoom: 14,
+                    center: myLatLng
+                });
+
+            }
+
+            function setCenter(myLat, myLng, zoomLevel) {
+                map = new google.maps.Map(document.getElementById("map-canvas"), {
+                    zoom: zoomLevel,
+                    center: {lat: myLat, lng: myLng},
+                });
+
+            }
+            function setMapOnAll(map) {
+                for (let i = 0; i < markers.length; i++) {
+                    markers[i].setMap(map);
+                }
+            }
+            function deleteMarker(label) {
+                for (var i = 0; i < markers.length; i++) {
+                    if (markers[i].label == label) {
+                        markers[i].setMap(null);
+                        markers.splice(i, 1);
+                        return;
+                    }
+                }
+            }
+            function clearMarkers() {
+                setMapOnAll(null);
+            }
+            function deleteMarkers() {
+                clearMarkers();
+                markers = [];
+            }
+            function clusterMarkers(enabled) {
+            if(enabled){
+            markerCluster=new MarkerClusterer(map, markers, {
+                    imagePath:
+                            "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
+                });
+            }else
+                markerCluster.setMap(null);
+            }
+            function addMarker(latVal, lngVal, markerLabel, info) {
+                const infowindow = new google.maps.InfoWindow({
+                    content: info,
+                });
+                const marker = new google.maps.Marker({
+                    position: {lat: latVal, lng: lngVal},
+                    label: markerLabel,
+                    map: map
+                });
+                marker.addListener("click", () => {
+                    infowindow.open(map, marker);
+                });
+                markers.push(marker);
+            }
+        </script>
+
+    </head>
+    <body>
+        <div id="map-canvas"></div>
+    </body>
+</html>
