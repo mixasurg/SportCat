@@ -52,8 +52,8 @@ public class MapsViewer extends JFXPanel {
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(MapsViewer.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                db.getAllMarker(markers);
-                addMarkersToMap();
+               
+//                addMarkersOnMap();
                 engine.load(f.toURI().toString());
             }
         });
@@ -81,17 +81,24 @@ public class MapsViewer extends JFXPanel {
     }
 
     public void createMarkers() {
-        Object[] mapArray = getCoordinateSet().toArray();
-        for (int i = 0; i < mapArray.length; i++) {
-            Point2D point = (Point2D) mapArray[i];
-            Marker marker = new Marker();
-            String info = "ÐŸÑ€Ð¸Ð²ÐµÑ‚! Ð­Ñ‚Ð¾ Ð¼Ð°Ñ€ÐºÐµÑ€ â„–" + String.valueOf(i + 1);
-            marker.setInfo(info);
-            marker.setLabel(String.valueOf(i + 1));
-            marker.setLat(String.valueOf(point.getX()));
-            marker.setLng(String.valueOf(point.getY()));
-            markers.add(marker);
-        }
+//        Object[] mapArray = getCoordinateSet().toArray();
+//        for (int i = 0; i < mapArray.length; i++) {
+//            Point2D point = (Point2D) mapArray[i];
+//            Marker marker = new Marker();
+//            String info = "Ïðèâåò! Ýòî ìàðêåð ¹" + String.valueOf(i + 1);
+//            marker.setInfo(info);
+//            marker.setLabel(String.valueOf(i + 1));
+//            marker.setLat(String.valueOf(point.getX()));
+//            marker.setLng(String.valueOf(point.getY()));
+//            markers.add(marker);
+//        }
+ try {
+                    db.getAllMarker(markers);
+                } catch (SQLException ex) {
+                    Logger.getLogger(MapsViewer.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                addMarkersToMap();
+                addMarkersOnMap();
 
     }
 
@@ -104,8 +111,7 @@ public class MapsViewer extends JFXPanel {
     public void addMarker(Marker marker) {
 
         Platform.runLater(() -> {
-            engine.executeScript("addMarker(" + marker.getLat() + "," + marker.getLng() + ",'" + marker.getLabel() + "','" + marker.getInfo() + "'" + ")");
-//            engine.executeScript("setMapOnAll()");
+            engine.executeScript("addMarker(" + marker.getLat() + "," + marker.getLng() + ",'" + marker.getInfo() + "','" + marker.getTime()+ "','" + marker.getColour()+ "','" + marker.getIcon_url()+ "'" + ")");
         });
     }
     

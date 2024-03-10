@@ -146,8 +146,8 @@ public class MapsFrame extends javax.swing.JFrame {
 
     private void addRandomMarkersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRandomMarkersButtonActionPerformed
 //      mapview.generateRandomCoordinates(Double.parseDouble(centerXTextField.getText()), Double.parseDouble(centerYTextField.getText()),1500, 100);
-//      mapview.createMarkers();
-      mapview.addMarkersToMap(); 
+      mapview.createMarkers();
+//      mapview.addMarkersToMap(); 
     }//GEN-LAST:event_addRandomMarkersButtonActionPerformed
 
     private void removeAllMarkersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeAllMarkersButtonActionPerformed

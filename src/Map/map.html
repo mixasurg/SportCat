@@ -16,32 +16,41 @@
             let markerCluster;
             var center = [55.10806033311338, 36.606742884436514];
 			
-            // Р¤СѓРЅРєС†РёСЏ ymaps.ready() Р±СѓРґРµС‚ РІС‹Р·РІР°РЅР°, РєРѕРіРґР°
-            // Р·Р°РіСЂСѓР·СЏС‚СЃСЏ РІСЃРµ РєРѕРјРїРѕРЅРµРЅС‚С‹ API, Р° С‚Р°РєР¶Рµ РєРѕРіРґР° Р±СѓРґРµС‚ РіРѕС‚РѕРІРѕ DOM-РґРµСЂРµРІРѕ.
+            // Функция ymaps.ready() будет вызвана, когда
+            // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
             ymaps.ready(init);
             function init(){
-                // РЎРѕР·РґР°РЅРёРµ РєР°СЂС‚С‹.
+                // Создание карты.
                 myMap = new ymaps.Map("map-canvas", {
-		// РљРѕРѕСЂРґРёРЅР°С‚С‹ С†РµРЅС‚СЂР° РєР°СЂС‚С‹.
-		// РџРѕСЂСЏРґРѕРє РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ: В«С€РёСЂРѕС‚Р°, РґРѕР»РіРѕС‚Р°В».
-		// Р§С‚РѕР±С‹ РЅРµ РѕРїСЂРµРґРµР»СЏС‚СЊ РєРѕРѕСЂРґРёРЅР°С‚С‹ С†РµРЅС‚СЂР° РєР°СЂС‚С‹ РІСЂСѓС‡РЅСѓСЋ,
-		// РІРѕСЃРїРѕР»СЊР·СѓР№С‚РµСЃСЊ РёРЅСЃС‚СЂСѓРјРµРЅС‚РѕРј РћРїСЂРµРґРµР»РµРЅРёРµ РєРѕРѕСЂРґРёРЅР°С‚.
+		// Координаты центра карты.
+		// Порядок по умолчанию: «широта, долгота».
+		// Чтобы не определять координаты центра карты вручную,
+		// воспользуйтесь инструментом Определение координат.
 //		center: [55.108505, 36.605135],
                 center: center,
-// РЈСЂРѕРІРµРЅСЊ РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°РЅРёСЏ. Р”РѕРїСѓСЃС‚РёРјС‹Рµ Р·РЅР°С‡РµРЅРёСЏ:
-		// РѕС‚ 0 (РІРµСЃСЊ РјРёСЂ) РґРѕ 19.
+// Уровень масштабирования. Допустимые значения:
+		// от 0 (весь мир) до 19.
 		zoom: 14
 		});
-//                var myPlacemark = new ymaps.Placemark([55.8, 37.6]);
-//                myMap.geoObjects.add(myPlacemark);
+                var myPlacemark = new ymaps.Placemark([55.8, 37.6],{hintContent: 'Собственный значок метки',
+            balloonContent: 'Это красивая метка'
+                },{
+                    iconLayout: 'default#image',
+                    iconImageHref: 'https://img.icons8.com/ios-glyphs/30/boxing.png',
+                    iconImageSize: [100, 100],
+                    iconImageOffset: [-3, -42]
+                });
+                myMap.geoObjects.add(myPlacemark);
             }	
 
-            function addMarker(x, y, markerLabel, info) {
+            function addMarker(x, y, info, time, clour, icon_url) {
                 
                 var address = [x,y];
                 var marker = new ymaps.Placemark(address,{
-                    balloonContent: info,
-                    iconCaption: markerLabel
+                    preset: 'islands#glyphIcon', 
+                    iconGlyph: icon_url,
+                    iconGlyphColor: clour,
+                    balloonContent: info + "<br>" +time
                 });
                 markers.push(marker);
                  

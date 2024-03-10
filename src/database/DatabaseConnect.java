@@ -6,9 +6,7 @@ package database;
 
 import Map.Marker;
 import java.awt.geom.Point2D;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 /**
@@ -18,34 +16,52 @@ import java.util.ArrayList;
 public class DatabaseConnect {
 
     Connection connection;
-    String url = "jdbc:postgresql//localhost:5432/sportcat";
+    String url = "jdbc:postgresql://localhost:5432/SportCat";
     String user = "postgres";
-    String password = "postgres";
+    String password = "mixasurg";
     
     public Connection dbConnection() throws SQLException, ClassNotFoundException
     {
         Class.forName("org.postgresql.Driver");
         
-        DriverManager.getConnection(url, user, password);
+        connection = DriverManager.getConnection(url, user, password);
+        
         return connection;
     }
     
-    public void getAllMarker(ArrayList<Marker> markers)
+    public void getAllMarker(ArrayList<Marker> markers) throws SQLException
     {
-        //–¢—É—Ç –∫–∞–∫–æ–π-—Ç–æ –∑–∞–ø—Ä–æ—Å + –ø–æ–ª—É—á–∏—Ç—å –∫–æ–ª-–≤–æ —ç–ª–µ–º–µ–Ω—Ç–æ–≤
-        int count = 0;
-        String X = "", Y = "";
-        for (int i = 0; i < count; i++) {
+        //“ÛÚ Í‡ÍÓÈ-ÚÓ Á‡ÔÓÒ + ÔÓÎÛ˜ËÚ¸ ÍÓÎ-‚Ó ˝ÎÂÏÂÌÚÓ‚
+        
+        String X, Y;
+        String query = "SELECT * FROM object "+
+                    "JOIN object_type ON object.sportground_id = object_type.sportground_id " +
+                    "JOIN location ON object.location_id = location.location_id "+
+                    "JOIN work_time ON object.workhour_id = work_time.workhour_id";
+        
+        Statement statement = connection.createStatement();
+        ResultSet result = statement.executeQuery(query);
+
+        while (result.next()) {
+            String description = result.getString("description");
+            String contact = result.getString("contact");
+            float rating = result.getFloat("rating");
+            String sportGround = result.getString("sportground");
+            X = result.getString("location_x");
+            Y = result.getString("location_y");
+            String iconUrl = result.getString("icon_url");
+            String time = result.getString("Work_hour");
             Marker marker = new Marker();
-            String info = "–ü—Ä–∏–≤–µ—Ç! –≠—Ç–æ –º–∞—Ä–∫–µ—Ä ‚Ññ" + String.valueOf(i + 1); //–°—é–¥–∞ –æ–ø–∏—Å–∞–Ω–∏–µ –∏–∑ –∑–∞–ø—Ä–æ—Å–∞ + –≤—Ä–µ–º—è —Ä–∞–±–æ—Ç—ã 
-            marker.setInfo(info);
-            marker.setRating(i); // –í—Å—Ç–∞–≤–∫–∞ —Ä—ç–π—Ç–∏–Ω–≥–∞
-            marker.setLabel(String.valueOf(i + 1));
+            marker.setLat(X);
+            marker.setInfo(description);
+            marker.setRating(rating); // ¬ÒÚ‡‚Í‡ ˝ÈÚËÌ„‡
             marker.setLat(X);
             marker.setLng(Y);
+            marker.setTime("◊‡Ò˚ ‡·ÓÚ˚: "+time);
+            marker.setIcon_url(iconUrl);
             markers.add(marker);
+            System.out.println(description+" "+contact+" "+rating+" "+sportGround+" "+X+" "+Y+" "+iconUrl+" "+time);
         }
-//        return markers;
-    }
-    
+     
+        }
 }

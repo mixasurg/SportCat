@@ -15,6 +15,8 @@ public class SportCat {
      */
     public static void main(String[] args) {
         new MapsFrame().setVisible(true);
+        String test = "Привет";
+        System.out.println(test);
     }
     
 }

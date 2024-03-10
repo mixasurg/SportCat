@@ -12,11 +12,28 @@ package Map;
 public class Marker {
     
     private String info;
-    private String label;
     private String lat;
     private String lng;
     private float rating;
     private String colour; 
+    private String time; 
+    private String icon_url; 
+
+    public String getIcon_url() {
+        return icon_url;
+    }
+
+    public void setIcon_url(String icon_url) {
+        this.icon_url = icon_url;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
 
     public String getColour() {
         return colour;
@@ -63,20 +80,6 @@ public class Marker {
      */
     public void setInfo(String info) {
         this.info = info;
-    }
-
-    /**
-     * @return the label
-     */
-    public String getLabel() {
-        return label;
-    }
-
-    /**
-     * @param label the label to set
-     */
-    public void setLabel(String label) {
-        this.label = label;
     }
 
     /**
