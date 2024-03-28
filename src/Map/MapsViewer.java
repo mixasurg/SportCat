@@ -7,13 +7,10 @@ package Map;
  */
 
 import database.DatabaseConnect;
-import java.awt.geom.Point2D;
 import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
@@ -29,10 +26,9 @@ import javafx.scene.web.WebView;
 public class MapsViewer extends JFXPanel {
 
     private final ArrayList<Marker> markers = new ArrayList<>();
+    Marker user = new Marker();
     private WebEngine engine = null;
     private WebView webView = null;
-    private final Set<Point2D> coordinateSet = new HashSet<>();
-    private final Random random = new Random();
     private final DatabaseConnect db = new DatabaseConnect();
 
     public void loadMap(String mapLocation) {
@@ -43,7 +39,6 @@ public class MapsViewer extends JFXPanel {
                 engine = webView.getEngine();
                 engine.setJavaScriptEnabled(true);
                 setScene(new Scene(webView));
-//                File f = new File(MapsViewer.this.getClass().getClassLoader().getResource(mapLocation).getFile());
                 File f = new File(MapsViewer.this.getClass().getClassLoader().getResource(mapLocation).getFile());
                 try {
                     db.dbConnection();
@@ -52,54 +47,44 @@ public class MapsViewer extends JFXPanel {
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(MapsViewer.class.getName()).log(Level.SEVERE, null, ex);
                 }
-               
-//                addMarkersOnMap();
                 engine.load(f.toURI().toString());
             }
         });
 
     }
 
-    public void generateRandomCoordinates(double centerX, double centerY, double radius, int count) {
-        double radiusInDegrees = radius / 111320f;
-        while (getCoordinateSet().size() <= count) {
-            double u = random.nextDouble();
-            double v = random.nextDouble();
-            double w = radiusInDegrees * Math.sqrt(u);
-            double t = 2 * Math.PI * v;
-            double x = w * Math.cos(t);
-            double y = w * Math.sin(t);
-            double new_x = x / Math.cos(Math.toRadians(centerY));
 
-            double foundLatitude;
-            double foundLongitude;
 
-            foundLongitude = centerY + y;
-            foundLatitude = centerX + new_x;
-            getCoordinateSet().add(new Point2D.Double(foundLatitude, foundLongitude));
+
+    
+    public void loadMarkerFromDb()
+    {
+        try {
+            db.getAllMarker(markers);
+        } catch (SQLException ex) {
+            Logger.getLogger(MapsViewer.class.getName()).log(Level.SEVERE, null, ex);
         }
+        addMarkersToMap();
+        addMarkersOnMap();
     }
-
-    public void createMarkers() {
-//        Object[] mapArray = getCoordinateSet().toArray();
-//        for (int i = 0; i < mapArray.length; i++) {
-//            Point2D point = (Point2D) mapArray[i];
-//            Marker marker = new Marker();
-//            String info = "Привет! Это маркер №" + String.valueOf(i + 1);
-//            marker.setInfo(info);
-//            marker.setLabel(String.valueOf(i + 1));
-//            marker.setLat(String.valueOf(point.getX()));
-//            marker.setLng(String.valueOf(point.getY()));
-//            markers.add(marker);
-//        }
- try {
-                    db.getAllMarker(markers);
-                } catch (SQLException ex) {
-                    Logger.getLogger(MapsViewer.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                addMarkersToMap();
-                addMarkersOnMap();
-
+        
+    public void loadMarkerFromDbId(int sg_id)
+    {
+        try {
+//            markers.clear();
+            db.getSportGroudMarker(markers, sg_id);
+        } catch (SQLException ex) {
+            Logger.getLogger(MapsViewer.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    }
+    
+    public void checkRadiusMarker(double radius)
+    {
+        ArrayList<Marker> nmarkers = findMarkersInRadius(user, markers, radius);
+        markers.clear();
+        for (Marker marker : nmarkers) {
+            markers.add(marker);
+        }
     }
 
     public void addMarkersToMap() {
@@ -111,7 +96,19 @@ public class MapsViewer extends JFXPanel {
     public void addMarker(Marker marker) {
 
         Platform.runLater(() -> {
-            engine.executeScript("addMarker(" + marker.getLat() + "," + marker.getLng() + ",'" + marker.getInfo() + "','" + marker.getTime()+ "','" + marker.getColour()+ "','" + marker.getIcon_url()+ "'" + ")");
+            engine.executeScript("addMarker(" + marker.getLat() + "," + marker.getLng() + ",'" + marker.getInfo() + "','" + marker.getTime()+ "','" + marker.getColour()+ "','" + marker.getIcon_url()+ "','" + marker.getName()+ "','" + marker.getAddress()+ "','" + marker.getContact()+ "'" + ")");
+        });
+    }
+    public void createUser(String X, String Y)
+    {
+        user.setLat(X);
+        user.setLng(Y);
+        addMarkerUser();
+    }
+    public void addMarkerUser() {
+
+        Platform.runLater(() -> {
+            engine.executeScript("addMarkerUser(" + user.getLat() + "," + user.getLng() + ")");
         });
     }
     
@@ -123,19 +120,41 @@ public class MapsViewer extends JFXPanel {
     }
 
     public void removeAllMarkers() {
-        coordinateSet.clear();
         markers.clear();
         Platform.runLater(() -> {
             engine.executeScript("deleteMarkers()");
         });
     }
 
-    /**
-     * @return the coordinateSet
-     */
-    public Set<Point2D> getCoordinateSet() {
-        return coordinateSet;
-    }
+       public static double distance(double lat1, double lng1, double lat2, double lng2) {
+        // ?????? ????? ? ??????????
+        double R = 6371;
 
+        // ?????????????? ????? ? ?????? ?? ???????? ? ???????
+        double latDistance = Math.toRadians(lat2 - lat1);
+        double lonDistance = Math.toRadians(lng2 - lng1);
+        double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2)
+                + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
+                * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        double distance = R * c;
+        return distance;
+    }
+    
+    // ??????? ??? ?????? ???????? ? ???????????? ??????? ?? ???????? ?????????
+    public static ArrayList<Marker> findMarkersInRadius(Marker user, List<Marker> markers, double radius) {
+        ArrayList<Marker> markersInRadius = new ArrayList<>();
+        for (Marker marker : markers) {
+            double markerLat = Double.parseDouble(marker.getLat());
+            double markerLnn = Double.parseDouble(marker.getLng());
+            double userLat = Double.parseDouble(user.getLat());            
+            double userLng = Double.parseDouble(user.getLng());
+            double dist = distance(userLat, userLng, markerLat, markerLnn);
+            if (dist <= radius) {
+                markersInRadius.add(marker);
+            }
+        }
+        return markersInRadius;
+    }
 }
 

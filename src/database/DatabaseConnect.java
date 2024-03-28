@@ -46,22 +46,61 @@ public class DatabaseConnect {
             String description = result.getString("description");
             String contact = result.getString("contact");
             float rating = result.getFloat("rating");
-            String sportGround = result.getString("sportground");
+//            String sportGround = result.getString("sportground");
             X = result.getString("location_x");
             Y = result.getString("location_y");
             String iconUrl = result.getString("icon_url");
             String time = result.getString("Work_hour");
+            String address = result.getString("address");
+            String name = result.getString("name");
             Marker marker = new Marker();
-            marker.setLat(X);
+            marker.setContact(contact);
             marker.setInfo(description);
+            marker.setAddress("Адрес: " + address);
+            marker.setName(name);
             marker.setRating(rating); // Вставка рэйтинга
             marker.setLat(X);
             marker.setLng(Y);
             marker.setTime("Часы работы: "+time);
             marker.setIcon_url(iconUrl);
             markers.add(marker);
-            System.out.println(description+" "+contact+" "+rating+" "+sportGround+" "+X+" "+Y+" "+iconUrl+" "+time);
         }
      
         }
+    public void getSportGroudMarker(ArrayList<Marker> markers, int sportground_id) throws SQLException
+    {
+        String X, Y;
+        String query = "SELECT * FROM object "+
+                    "JOIN object_type ON object.sportground_id = object_type.sportground_id " +
+                    "JOIN location ON object.location_id = location.location_id "+
+                    "JOIN work_time ON object.workhour_id = work_time.workhour_id "+
+                "WHERE object.sportground_id = ?";
+        
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setInt(1, sportground_id);
+        ResultSet result = statement.executeQuery();
+        while (result.next()) {
+            String description = result.getString("description");
+            String contact = result.getString("contact");
+            float rating = result.getFloat("rating");
+//            String sportGround = result.getString("sportground");
+            X = result.getString("location_x");
+            Y = result.getString("location_y");
+            String iconUrl = result.getString("icon_url");
+            String time = result.getString("Work_hour");
+            String address = result.getString("address");
+            String name = result.getString("name");
+            Marker marker = new Marker();
+            marker.setInfo(description);
+            marker.setAddress(address);
+            marker.setName(name);
+            marker.setContact(contact);
+            marker.setRating(rating); // Вставка рэйтинга
+            marker.setLat(X);
+            marker.setLng(Y);
+            marker.setTime("Часы работы: "+time);
+            marker.setIcon_url(iconUrl);
+            markers.add(marker);
+        }
+    }
 }

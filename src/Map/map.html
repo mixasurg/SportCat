@@ -32,25 +32,60 @@
 		// от 0 (весь мир) до 19.
 		zoom: 14
 		});
-                var myPlacemark = new ymaps.Placemark([55.8, 37.6],{hintContent: 'Собственный значок метки',
-            balloonContent: 'Это красивая метка'
-                },{
-                    iconLayout: 'default#image',
-                    iconImageHref: 'https://img.icons8.com/ios-glyphs/30/boxing.png',
-                    iconImageSize: [100, 100],
-                    iconImageOffset: [-3, -42]
-                });
-                myMap.geoObjects.add(myPlacemark);
-            }	
+//                myMap.yandexMapDisablePoiInteractivity(true);
 
-            function addMarker(x, y, info, time, clour, icon_url) {
-                
+            }	
+            function addMarkerUser (x,y)
+            {
+                 MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+                '<img width="19" height="19" src=".\\user_icon.png">'
+                );
                 var address = [x,y];
                 var marker = new ymaps.Placemark(address,{
+                    balloonContentBody: [
+                    '<strong>',
+                    'Вы находитесь тут',
+                    '</strong>'
+                    ].join('')
+                },{
                     preset: 'islands#glyphIcon', 
-                    iconGlyph: icon_url,
-                    iconGlyphColor: clour,
-                    balloonContent: info + "<br>" +time
+                    iconColor: 'grey',
+                    iconContentOffset: [1, 15],
+                    // Макет содержимого.
+                    iconContentLayout: MyIconContentLayout
+                });
+                myMap.geoObjects.add(marker);
+            }
+            
+            function addMarker( x, y, info, time, clour, icon_url, name, address1, contact) {
+                MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+                '<img width="19" height="19" src="$[properties.iconContent]">'
+                );
+                var address = [x,y];
+                var marker = new ymaps.Placemark(address,{
+                    iconContent: icon_url,
+//                    balloonContent: info + "<br>" +time,
+                    balloonContentBody: [
+                    '<address>',
+                    '<strong>',
+                    name,
+                    '</strong>',
+                    '<br/>',
+                    info,
+                    '<br/>',
+                    address1,
+                    '<br/>',
+                    time,
+                    '<br/>',
+                    'Подробнее: <a href="',contact,'">',contact,'</a>',
+                    '</address>'
+                    ].join('')
+                },{
+                    preset: 'islands#glyphIcon', 
+                    iconColor: clour,
+                    iconContentOffset: [1, 15],
+                    // Макет содержимого.
+                    iconContentLayout: MyIconContentLayout
                 });
                 markers.push(marker);
                  
@@ -62,7 +97,7 @@
                 }
             }
             function deleteMarkers() {
-                myMap.geoObjects.removeAll()
+                myMap.geoObjects.removeAll();
                 markers = [];
             }
         </script>

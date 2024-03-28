@@ -14,6 +14,8 @@ package Map;
  */
 public class MapsFrame extends javax.swing.JFrame {
     private final MapsViewer mapview = new MapsViewer();
+    private final Filter filter = new Filter(mapview);
+
     /**
      * Creates new form GoogleMapsFrame
      */
@@ -22,8 +24,8 @@ public class MapsFrame extends javax.swing.JFrame {
         mapview.setSize(mapsPanel.getSize());
         mapsPanel.add(mapview);
         mapview.loadMap("./Map/map.html");
-        
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -60,19 +62,21 @@ public class MapsFrame extends javax.swing.JFrame {
             .addGap(0, 773, Short.MAX_VALUE)
         );
 
-        addRandomMarkersButton.setText("Р”РѕР±Р°РІРёС‚СЊ СЃР»СѓС‡Р°Р№РЅС‹Рµ С‚РѕС‡РєРё");
+        addRandomMarkersButton.setText("Добавить случайные точки");
         addRandomMarkersButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addRandomMarkersButtonActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("РљРѕРѕСЂРґРёРЅР°С‚Р° X:");
+        jLabel3.setText("Ваша координата X:");
 
+        centerXTextField.setEditable(false);
         centerXTextField.setText("55.10806033311338");
 
-        jLabel4.setText("РљРѕРѕСЂРґРёРЅР°С‚Р° Y:");
+        jLabel4.setText("Ваша координата Y:");
 
+        centerYTextField.setEditable(false);
         centerYTextField.setText("36.606742884436514");
         centerYTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,14 +84,14 @@ public class MapsFrame extends javax.swing.JFrame {
             }
         });
 
-        removeAllMarkersButton.setText("РЈР±СЂР°С‚СЊ РІСЃРµ С‚РѕС‡РєРё");
+        removeAllMarkersButton.setText("Убрать все точки");
         removeAllMarkersButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 removeAllMarkersButtonActionPerformed(evt);
             }
         });
 
-        Filter.setText("Р¤РёР»СЊС‚СЂ");
+        Filter.setText("Фильтр");
         Filter.setActionCommand("FIlter");
         Filter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,26 +104,27 @@ public class MapsFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(centerXTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(36, 36, 36)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(centerXTextField))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(centerYTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(125, 125, 125)
+                        .addComponent(addRandomMarkersButton)
+                        .addGap(54, 54, 54)
+                        .addComponent(removeAllMarkersButton, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                        .addGap(169, 169, 169)
+                        .addComponent(Filter, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(centerYTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(125, 125, 125)
-                .addComponent(addRandomMarkersButton)
-                .addGap(54, 54, 54)
-                .addComponent(removeAllMarkersButton, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                .addGap(198, 198, 198)
-                .addComponent(Filter)
-                .addGap(77, 77, 77))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(mapsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap()
+                        .addComponent(mapsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -145,9 +150,7 @@ public class MapsFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addRandomMarkersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRandomMarkersButtonActionPerformed
-//      mapview.generateRandomCoordinates(Double.parseDouble(centerXTextField.getText()), Double.parseDouble(centerYTextField.getText()),1500, 100);
-      mapview.createMarkers();
-//      mapview.addMarkersToMap(); 
+        mapview.loadMarkerFromDb();
     }//GEN-LAST:event_addRandomMarkersButtonActionPerformed
 
     private void removeAllMarkersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeAllMarkersButtonActionPerformed
@@ -159,9 +162,17 @@ public class MapsFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_centerYTextFieldActionPerformed
 
     private void FilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FilterActionPerformed
-        
+        filter.setVisible(true);
+        filter.setAlwaysOnTop(true);
     }//GEN-LAST:event_FilterActionPerformed
 
+    public void startload(String X, String Y)
+    {
+        centerXTextField.setText(X);
+        centerYTextField.setText(Y);
+        mapview.createUser(X, Y);
+        mapview.loadMarkerFromDb();
+    }
     /**
      * @param args the command line arguments
      */
