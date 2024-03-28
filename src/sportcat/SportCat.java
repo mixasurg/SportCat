@@ -14,9 +14,12 @@ public class SportCat {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        new MapsFrame().setVisible(true);
-        String test = "Привет";
-        System.out.println(test);
+        MapsFrame map = new MapsFrame();
+        map.setVisible(true);
+        StartFrame st = new StartFrame(map);
+        st.setVisible(true);        
+        st.setAlwaysOnTop(true);
+        
     }
     
 }
