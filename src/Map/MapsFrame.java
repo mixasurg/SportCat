@@ -62,19 +62,19 @@ public class MapsFrame extends javax.swing.JFrame {
             .addGap(0, 773, Short.MAX_VALUE)
         );
 
-        addRandomMarkersButton.setText("Добавить случайные точки");
+        addRandomMarkersButton.setText("Р”РѕР±Р°РІРёС‚СЊ СЃР»СѓС‡Р°Р№РЅС‹Рµ С‚РѕС‡РєРё");
         addRandomMarkersButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addRandomMarkersButtonActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("Ваша координата X:");
+        jLabel3.setText("Р’Р°С€Р° РєРѕРѕСЂРґРёРЅР°С‚Р° X:");
 
         centerXTextField.setEditable(false);
         centerXTextField.setText("55.10806033311338");
 
-        jLabel4.setText("Ваша координата Y:");
+        jLabel4.setText("Р’Р°С€Р° РєРѕРѕСЂРґРёРЅР°С‚Р° Y:");
 
         centerYTextField.setEditable(false);
         centerYTextField.setText("36.606742884436514");
@@ -84,14 +84,14 @@ public class MapsFrame extends javax.swing.JFrame {
             }
         });
 
-        removeAllMarkersButton.setText("Убрать все точки");
+        removeAllMarkersButton.setText("РЈР±СЂР°С‚СЊ РІСЃРµ С‚РѕС‡РєРё");
         removeAllMarkersButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 removeAllMarkersButtonActionPerformed(evt);
             }
         });
 
-        Filter.setText("Фильтр");
+        Filter.setText("Р¤РёР»СЊС‚СЂ");
         Filter.setActionCommand("FIlter");
         Filter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
