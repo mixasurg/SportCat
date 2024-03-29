@@ -30,27 +30,39 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="xokeyBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="fightBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="dzudoBox" min="-2" max="-2" attributes="0"/>
-                          <Component id="tekvondoBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="volleybalBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lightBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="futtbolBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="swimBox" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="53" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="zalBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="fitnesBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
                               <Component id="yogaBox" min="-2" max="-2" attributes="0"/>
-                              <Component id="katokBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="xokeyBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="fightBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="volleybalBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lightBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="futtbolBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="zalBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="fitnesBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="swimBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="boksBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="tekvondoBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="dzudoBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="katokBox" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace pref="70" max="32767" attributes="0"/>
+                                      <Component id="allCheckBox" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="151" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
@@ -72,16 +84,9 @@
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="boksBox" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-              </Group>
-          </Group>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="374" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -91,8 +96,13 @@
           <Group type="102" alignment="1" attributes="0">
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace pref="51" max="32767" attributes="0"/>
-                      <Component id="katokBox" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="11" max="32767" attributes="0"/>
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="katokBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="allCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="yogaBox" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -117,6 +127,7 @@
                       <Component id="volleybalBox" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="tekvondoBox" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
@@ -143,13 +154,6 @@
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-          </Group>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="334" max="32767" attributes="0"/>
-              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -366,6 +370,15 @@
         </Property>
         <Property name="text" type="java.lang.String" value="&#x41a;&#x430;&#x442;&#x435;&#x433;&#x43e;&#x440;&#x438;&#x44f;:"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="allCheckBox">
+      <Properties>
+        <Property name="selected" type="boolean" value="true"/>
+        <Property name="text" type="java.lang.String" value="&#x412;&#x44b;&#x431;&#x440;&#x430;&#x442;&#x44c; &#x432;&#x441;&#x435; &#x43a;&#x430;&#x442;&#x435;&#x433;&#x43e;&#x440;&#x438;&#x438;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="allCheckBoxActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
