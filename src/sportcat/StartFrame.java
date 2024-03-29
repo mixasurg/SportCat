@@ -43,15 +43,15 @@ public class StartFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Укажите пожалуйста координаты по следующему ввиду, если не установите автоматически будут стоят координаты проспект Ленина 69");
+        jLabel1.setText("РЈРєР°Р¶РёС‚Рµ РїРѕР¶Р°Р»СѓР№СЃС‚Р° РєРѕРѕСЂРґРёРЅР°С‚С‹ РїРѕ СЃР»РµРґСѓСЋС‰РµРјСѓ РІРІРёРґСѓ, РµСЃР»Рё РЅРµ СѓСЃС‚Р°РЅРѕРІРёС‚Рµ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё Р±СѓРґСѓС‚ СЃС‚РѕСЏС‚ РєРѕРѕСЂРґРёРЅР°С‚С‹ РїСЂРѕСЃРїРµРєС‚ Р›РµРЅРёРЅР° 69");
         jLabel1.setToolTipText("");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setText("ВАС ПРИВЕТСТВУЕТ ПРИЛОЖЕНИЕ СПОРТИВНЫЙ КОТИК");
+        jLabel2.setText("Р’РђРЎ РџР РР’Р•РўРЎРўР’РЈР•Рў РџР РР›РћР–Р•РќРР• РЎРџРћР РўРР’РќР«Р™ РљРћРўРРљ");
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sportcat/icon.png"))); // NOI18N
 
-        jLabel4.setText("Ваша координата X:");
+        jLabel4.setText("Р’Р°С€Р° РєРѕРѕСЂРґРёРЅР°С‚Р° X:");
 
         jTextField1.setText("55.095827");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -67,9 +67,9 @@ public class StartFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("Ваша координата Y:");
+        jLabel5.setText("Р’Р°С€Р° РєРѕРѕСЂРґРёРЅР°С‚Р° Y:");
 
-        jButton1.setText("Начать");
+        jButton1.setText("РќР°С‡Р°С‚СЊ");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -102,7 +102,7 @@ public class StartFrame extends javax.swing.JFrame {
                             .addGap(157, 157, 157)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(348, 348, 348))))
+                        .addGap(332, 332, 332))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
