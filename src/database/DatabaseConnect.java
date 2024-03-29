@@ -31,7 +31,7 @@ public class DatabaseConnect {
     
     public void getAllMarker(ArrayList<Marker> markers) throws SQLException
     {
-        //Тут какой-то запрос + получить кол-во элементов
+        //Е‡ГіЕ€ Д™Е•Д™Г®Г©-Е€Г® Г§Е•ДЏД‘Г®Е„ + ДЏГ®Г«ГіГ·ДЌЕ€Гј Д™Г®Г«-ГўГ® ГЅГ«ДєД›ДєГ­Е€Г®Гў
         
         String X, Y;
         String query = "SELECT * FROM object "+
@@ -56,12 +56,12 @@ public class DatabaseConnect {
             Marker marker = new Marker();
             marker.setContact(contact);
             marker.setInfo(description);
-            marker.setAddress("Адрес: " + address);
+            marker.setAddress("РђРґСЂРµСЃ: " + address);
             marker.setName(name);
-            marker.setRating(rating); // Вставка рэйтинга
+            marker.setRating(rating); // Г‚Е„Е€Е•ГўД™Е• Д‘ГЅГ©Е€ДЌГ­ДѓЕ•
             marker.setLat(X);
             marker.setLng(Y);
-            marker.setTime("Часы работы: "+time);
+            marker.setTime("Р’СЂРµРјСЏ СЂР°Р±РѕС‚С‹: "+time);
             marker.setIcon_url(iconUrl);
             markers.add(marker);
         }
@@ -92,13 +92,13 @@ public class DatabaseConnect {
             String name = result.getString("name");
             Marker marker = new Marker();
             marker.setInfo(description);
-            marker.setAddress(address);
+            marker.setAddress("РђРґСЂРµСЃ: " + address);
             marker.setName(name);
             marker.setContact(contact);
-            marker.setRating(rating); // Вставка рэйтинга
+            marker.setRating(rating); // Г‚Е„Е€Е•ГўД™Е• Д‘ГЅГ©Е€ДЌГ­ДѓЕ•
             marker.setLat(X);
             marker.setLng(Y);
-            marker.setTime("Часы работы: "+time);
+            marker.setTime("Р’СЂРµРјСЏ СЂР°Р±РѕС‚С‹: "+time);
             marker.setIcon_url(iconUrl);
             markers.add(marker);
         }
