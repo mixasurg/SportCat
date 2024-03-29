@@ -35,7 +35,7 @@
 //                myMap.yandexMapDisablePoiInteractivity(true);
 
             }	
-            function addMarkerUser (x,y)
+            function addMarkerUser (x,y,temp)
             {
                  MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
                 '<img width="19" height="19" src=".\\user_icon.png">'
@@ -44,7 +44,7 @@
                 var marker = new ymaps.Placemark(address,{
                     balloonContentBody: [
                     '<strong>',
-                    'Вы находитесь тут',
+                    temp,
                     '</strong>'
                     ].join('')
                 },{
@@ -57,7 +57,7 @@
                 myMap.geoObjects.add(marker);
             }
             
-            function addMarker( x, y, info, time, clour, icon_url, name, address1, contact) {
+            function addMarker( x, y, info, time, clour, icon_url, name, address1, contact,temp) {
                 MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
                 '<img width="19" height="19" src="$[properties.iconContent]">'
                 );
@@ -77,7 +77,8 @@
                     '<br/>',
                     time,
                     '<br/>',
-                    'Контакты: <a href="',contact,'">',contact,'</a>',
+                    temp,
+                    ' <a href="',contact,'">',contact,'</a>',
                     '</address>'
                     ].join('')
                 },{

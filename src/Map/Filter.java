@@ -4,6 +4,7 @@
  */
 package Map;
 
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,6 +19,7 @@ public class Filter extends javax.swing.JFrame {
     
     public Filter(MapsViewer mapview) {
         initComponents();
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage("/pics/icon.png"));
         mapviewf = mapview;
         for (int i = 0; i < 12; i++)
         {
@@ -63,7 +65,7 @@ public class Filter extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         allCheckBox = new javax.swing.JCheckBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Фильтр");
 
         jButton1.setText("Выбрать");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

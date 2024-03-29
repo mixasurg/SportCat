@@ -1,5 +1,7 @@
 package Map;
 
+import java.awt.Toolkit;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -24,6 +26,7 @@ public class MapsFrame extends javax.swing.JFrame {
         mapview.setSize(mapsPanel.getSize());
         mapsPanel.add(mapview);
         mapview.loadMap("./Map/map.html");
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage("/pics/icon.png"));
     }
 
 
@@ -37,15 +40,14 @@ public class MapsFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         mapsPanel = new javax.swing.JPanel();
-        addRandomMarkersButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         centerXTextField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         centerYTextField = new javax.swing.JTextField();
-        removeAllMarkersButton = new javax.swing.JButton();
         Filter = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Карта");
         setAlwaysOnTop(true);
         setResizable(false);
 
@@ -62,13 +64,6 @@ public class MapsFrame extends javax.swing.JFrame {
             .addGap(0, 773, Short.MAX_VALUE)
         );
 
-        addRandomMarkersButton.setText("Добавить случайные точки");
-        addRandomMarkersButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addRandomMarkersButtonActionPerformed(evt);
-            }
-        });
-
         jLabel3.setText("Ваша координата X:");
 
         centerXTextField.setEditable(false);
@@ -81,13 +76,6 @@ public class MapsFrame extends javax.swing.JFrame {
         centerYTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 centerYTextFieldActionPerformed(evt);
-            }
-        });
-
-        removeAllMarkersButton.setText("Убрать все точки");
-        removeAllMarkersButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removeAllMarkersButtonActionPerformed(evt);
             }
         });
 
@@ -116,11 +104,7 @@ public class MapsFrame extends javax.swing.JFrame {
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(centerYTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(125, 125, 125)
-                        .addComponent(addRandomMarkersButton)
-                        .addGap(54, 54, 54)
-                        .addComponent(removeAllMarkersButton, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
-                        .addGap(169, 169, 169)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 770, Short.MAX_VALUE)
                         .addComponent(Filter, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -136,8 +120,6 @@ public class MapsFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(centerXTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addRandomMarkersButton)
-                    .addComponent(removeAllMarkersButton)
                     .addComponent(Filter))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -148,14 +130,6 @@ public class MapsFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void addRandomMarkersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRandomMarkersButtonActionPerformed
-        mapview.loadMarkerFromDb();
-    }//GEN-LAST:event_addRandomMarkersButtonActionPerformed
-
-    private void removeAllMarkersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeAllMarkersButtonActionPerformed
-       mapview.removeAllMarkers();  
-    }//GEN-LAST:event_removeAllMarkersButtonActionPerformed
 
     private void centerYTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_centerYTextFieldActionPerformed
         // TODO add your handling code here:
@@ -214,12 +188,10 @@ public class MapsFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Filter;
-    private javax.swing.JButton addRandomMarkersButton;
     private javax.swing.JTextField centerXTextField;
     private javax.swing.JTextField centerYTextField;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel mapsPanel;
-    private javax.swing.JButton removeAllMarkersButton;
     // End of variables declaration//GEN-END:variables
 }

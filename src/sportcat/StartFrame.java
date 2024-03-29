@@ -5,6 +5,7 @@
 package sportcat;
 
 import Map.MapsFrame;
+import java.awt.Toolkit;
 
 /**
  *
@@ -20,6 +21,7 @@ public class StartFrame extends javax.swing.JFrame {
     MapsFrame map;
     public StartFrame(MapsFrame m) {
         initComponents();
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage("/pics/icon.png"));
         map = m;
     }
 
@@ -41,7 +43,8 @@ public class StartFrame extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Спортивный котик");
+        setIconImages(null);
 
         jLabel1.setText("Укажите пожалуйста координаты по следующему ввиду, если не установите автоматически будут стоят координаты проспект Ленина 69");
         jLabel1.setToolTipText("");

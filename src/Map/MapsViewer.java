@@ -96,7 +96,7 @@ public class MapsViewer extends JFXPanel {
     public void addMarker(Marker marker) {
 
         Platform.runLater(() -> {
-            engine.executeScript("addMarker(" + marker.getLat() + "," + marker.getLng() + ",'" + marker.getInfo() + "','" + marker.getTime()+ "','" + marker.getColour()+ "','" + marker.getIcon_url()+ "','" + marker.getName()+ "','" + marker.getAddress()+ "','" + marker.getContact()+ "'" + ")");
+            engine.executeScript("addMarker(" + marker.getLat() + "," + marker.getLng() + ",'" + marker.getInfo() + "','" + marker.getTime()+ "','" + marker.getColour()+ "','" + marker.getIcon_url()+ "','" + marker.getName()+ "','" + marker.getAddress()+ "','" + marker.getContact()+ "','" + "Контакты:" + "'"+ ")");
         });
     }
     public void createUser(String X, String Y)
@@ -108,7 +108,7 @@ public class MapsViewer extends JFXPanel {
     public void addMarkerUser() {
 
         Platform.runLater(() -> {
-            engine.executeScript("addMarkerUser(" + user.getLat() + "," + user.getLng() + ")");
+            engine.executeScript("addMarkerUser(" + user.getLat() + "," + user.getLng() + ",'" + "Вы находитесь здесь'" + ")");
         });
     }
     
