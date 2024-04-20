@@ -5,6 +5,7 @@
 package Map;
 
 import java.awt.Toolkit;
+import java.util.HashSet;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,7 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class Filter extends javax.swing.JFrame {
 
-    private boolean[] state = new boolean[13];
+    private boolean[] state = new boolean[29];
     double radius;
     private final MapsViewer mapviewf;
     
@@ -21,7 +22,7 @@ public class Filter extends javax.swing.JFrame {
         initComponents();
         this.setIconImage(Toolkit.getDefaultToolkit().getImage("/pics/icon.png"));
         mapviewf = mapview;
-        for (int i = 0; i < 12; i++)
+        for (int i = 0; i < 28; i++)
         {
             state[i] = true;
         }
@@ -29,6 +30,13 @@ public class Filter extends javax.swing.JFrame {
 
     private Filter() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    private void setstatus(int number)
+    {
+        if(!state[number])
+            state[number]= true;
+        else state[number] = false;
     }
 
     /**
@@ -41,6 +49,7 @@ public class Filter extends javax.swing.JFrame {
     private void initComponents() {
 
         radiusGroup = new javax.swing.ButtonGroup();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jButton1 = new javax.swing.JButton();
         katokBox = new javax.swing.JCheckBox();
         jButton2 = new javax.swing.JButton();
@@ -64,6 +73,22 @@ public class Filter extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         allCheckBox = new javax.swing.JCheckBox();
+        pilatesBox = new javax.swing.JCheckBox();
+        badmintonBox = new javax.swing.JCheckBox();
+        regbyBox = new javax.swing.JCheckBox();
+        chessBox = new javax.swing.JCheckBox();
+        arrowBox = new javax.swing.JCheckBox();
+        dayvingBox = new javax.swing.JCheckBox();
+        boulingBox = new javax.swing.JCheckBox();
+        tennisBox = new javax.swing.JCheckBox();
+        skalolBox = new javax.swing.JCheckBox();
+        batutBox = new javax.swing.JCheckBox();
+        snowboardBox = new javax.swing.JCheckBox();
+        beachVolleyBox = new javax.swing.JCheckBox();
+        skeytBox = new javax.swing.JCheckBox();
+        katamrBox = new javax.swing.JCheckBox();
+        rollerBox = new javax.swing.JCheckBox();
+        rastBox = new javax.swing.JCheckBox();
 
         setTitle("Фильтр");
 
@@ -295,6 +320,214 @@ public class Filter extends javax.swing.JFrame {
             }
         });
 
+        pilatesBox.setSelected(true);
+        pilatesBox.setText("Пилатес");
+        pilatesBox.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                pilatesBoxStateChanged(evt);
+            }
+        });
+        pilatesBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pilatesBoxActionPerformed(evt);
+            }
+        });
+
+        badmintonBox.setSelected(true);
+        badmintonBox.setText("Бадминтон");
+        badmintonBox.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                badmintonBoxStateChanged(evt);
+            }
+        });
+        badmintonBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                badmintonBoxActionPerformed(evt);
+            }
+        });
+
+        regbyBox.setSelected(true);
+        regbyBox.setText("Рэгби");
+        regbyBox.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                regbyBoxStateChanged(evt);
+            }
+        });
+        regbyBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regbyBoxActionPerformed(evt);
+            }
+        });
+
+        chessBox.setSelected(true);
+        chessBox.setText("Шахматы");
+        chessBox.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                chessBoxStateChanged(evt);
+            }
+        });
+        chessBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chessBoxActionPerformed(evt);
+            }
+        });
+
+        arrowBox.setSelected(true);
+        arrowBox.setText("Стрельба из лука");
+        arrowBox.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                arrowBoxStateChanged(evt);
+            }
+        });
+        arrowBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                arrowBoxActionPerformed(evt);
+            }
+        });
+
+        dayvingBox.setSelected(true);
+        dayvingBox.setText("Дайвинг");
+        dayvingBox.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                dayvingBoxStateChanged(evt);
+            }
+        });
+        dayvingBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dayvingBoxActionPerformed(evt);
+            }
+        });
+
+        boulingBox.setSelected(true);
+        boulingBox.setText("Боулинг");
+        boulingBox.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                boulingBoxStateChanged(evt);
+            }
+        });
+        boulingBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boulingBoxActionPerformed(evt);
+            }
+        });
+
+        tennisBox.setSelected(true);
+        tennisBox.setText("Настольный теннис");
+        tennisBox.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                tennisBoxStateChanged(evt);
+            }
+        });
+        tennisBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tennisBoxActionPerformed(evt);
+            }
+        });
+
+        skalolBox.setSelected(true);
+        skalolBox.setText("Скалолазание");
+        skalolBox.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                skalolBoxStateChanged(evt);
+            }
+        });
+        skalolBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                skalolBoxActionPerformed(evt);
+            }
+        });
+
+        batutBox.setSelected(true);
+        batutBox.setText("Батут");
+        batutBox.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                batutBoxStateChanged(evt);
+            }
+        });
+        batutBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                batutBoxActionPerformed(evt);
+            }
+        });
+
+        snowboardBox.setSelected(true);
+        snowboardBox.setText("Сноуборд");
+        snowboardBox.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                snowboardBoxStateChanged(evt);
+            }
+        });
+        snowboardBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                snowboardBoxActionPerformed(evt);
+            }
+        });
+
+        beachVolleyBox.setSelected(true);
+        beachVolleyBox.setText("Пляжный волейбол");
+        beachVolleyBox.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                beachVolleyBoxStateChanged(evt);
+            }
+        });
+        beachVolleyBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                beachVolleyBoxActionPerformed(evt);
+            }
+        });
+
+        skeytBox.setSelected(true);
+        skeytBox.setText("Скейтпарк");
+        skeytBox.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                skeytBoxStateChanged(evt);
+            }
+        });
+        skeytBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                skeytBoxActionPerformed(evt);
+            }
+        });
+
+        katamrBox.setSelected(true);
+        katamrBox.setText("Катамаран");
+        katamrBox.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                katamrBoxStateChanged(evt);
+            }
+        });
+        katamrBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                katamrBoxActionPerformed(evt);
+            }
+        });
+
+        rollerBox.setSelected(true);
+        rollerBox.setText("Лыжероллеры");
+        rollerBox.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                rollerBoxStateChanged(evt);
+            }
+        });
+        rollerBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rollerBoxActionPerformed(evt);
+            }
+        });
+
+        rastBox.setSelected(true);
+        rastBox.setText("Растяжка");
+        rastBox.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                rastBoxStateChanged(evt);
+            }
+        });
+        rastBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rastBoxActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -304,85 +537,66 @@ public class Filter extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(yogaBox)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(xokeyBox)
-                                            .addComponent(fightBox)
-                                            .addComponent(volleybalBox)
-                                            .addComponent(lightBox)
-                                            .addComponent(futtbolBox)
-                                            .addComponent(zalBox)
-                                            .addComponent(fitnesBox)
-                                            .addComponent(swimBox)
-                                            .addComponent(boksBox)
-                                            .addComponent(tekvondoBox)
-                                            .addComponent(dzudoBox))
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(katokBox)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                                        .addComponent(allCheckBox)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                    .addComponent(katokBox)
+                                    .addComponent(yogaBox)
+                                    .addComponent(xokeyBox)
+                                    .addComponent(fightBox)
+                                    .addComponent(volleybalBox)
+                                    .addComponent(lightBox)
+                                    .addComponent(futtbolBox)
+                                    .addComponent(zalBox)
+                                    .addComponent(fitnesBox)
+                                    .addComponent(swimBox)
+                                    .addComponent(boksBox)
+                                    .addComponent(tekvondoBox)
+                                    .addComponent(dzudoBox))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(rastBox)
+                                .addGap(67, 67, 67)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(26, 26, 26)
-                                .addComponent(jButton2)
-                                .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jRadioButton500metr)
-                                    .addComponent(jRadioButton5km)
-                                    .addComponent(jRadioButtonall)
-                                    .addComponent(jRadioButton2km)
-                                    .addComponent(jRadioButton1km)
-                                    .addComponent(jLabel1))
-                                .addGap(78, 78, 78))))
+                            .addComponent(rollerBox)
+                            .addComponent(boulingBox)
+                            .addComponent(tennisBox)
+                            .addComponent(skeytBox)
+                            .addComponent(beachVolleyBox)
+                            .addComponent(regbyBox)
+                            .addComponent(chessBox)
+                            .addComponent(arrowBox)
+                            .addComponent(pilatesBox)
+                            .addComponent(skalolBox)
+                            .addComponent(batutBox)
+                            .addComponent(dayvingBox)
+                            .addComponent(badmintonBox)
+                            .addComponent(snowboardBox))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(allCheckBox)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jRadioButton500metr)
+                            .addComponent(jRadioButton5km)
+                            .addComponent(jRadioButtonall)
+                            .addComponent(jRadioButton2km)
+                            .addComponent(jRadioButton1km)
+                            .addComponent(jLabel1))
+                        .addGap(78, 78, 78))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(katamrBox)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(26, 26, 26)
+                        .addComponent(jButton2)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(11, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(katokBox)
-                            .addComponent(allCheckBox))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(yogaBox)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fitnesBox)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(swimBox)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(zalBox)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(xokeyBox)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fightBox)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(boksBox)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dzudoBox)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(futtbolBox)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lightBox)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(volleybalBox)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tekvondoBox)
-                        .addGap(12, 12, 12))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(53, 53, 53)
                         .addComponent(jLabel1)
@@ -401,7 +615,75 @@ public class Filter extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1)
-                            .addComponent(jButton2))))
+                            .addComponent(jButton2)
+                            .addComponent(katamrBox)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(katokBox)
+                                            .addComponent(allCheckBox))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(yogaBox)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(fitnesBox)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(swimBox)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(zalBox)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(xokeyBox)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(fightBox)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(boksBox)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(dzudoBox)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(futtbolBox)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lightBox)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(volleybalBox)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tekvondoBox))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(boulingBox)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tennisBox)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(skalolBox)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(batutBox)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(pilatesBox)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(skeytBox)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(beachVolleyBox)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(dayvingBox)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(snowboardBox)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(arrowBox)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(chessBox)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(regbyBox)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(badmintonBox)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rastBox)
+                                .addGap(28, 28, 28))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(rollerBox)
+                                .addGap(30, 30, 30)))))
                 .addContainerGap())
         );
 
@@ -411,7 +693,7 @@ public class Filter extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         mapviewf.removeAllMarkers();
         mapviewf.addMarkerUser();
-        for (int i = 0; i < 12; i++)
+        for (int i = 0; i < 28; i++)
         {
             if (state[i]) {
                 
@@ -439,9 +721,7 @@ public class Filter extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void katokBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_katokBoxActionPerformed
-        if(!state[0])
-            state[0]= true;
-        else state[0] = false;
+        setstatus(0);
     }//GEN-LAST:event_katokBoxActionPerformed
 
     private void katokBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_katokBoxStateChanged
@@ -457,9 +737,7 @@ public class Filter extends javax.swing.JFrame {
     }//GEN-LAST:event_yogaBoxStateChanged
 
     private void yogaBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yogaBoxActionPerformed
-        if(!state[1])
-            state[1]= true;
-        else state[1] = false;
+        setstatus(1);
     }//GEN-LAST:event_yogaBoxActionPerformed
 
     private void fitnesBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_fitnesBoxStateChanged
@@ -467,9 +745,7 @@ public class Filter extends javax.swing.JFrame {
     }//GEN-LAST:event_fitnesBoxStateChanged
 
     private void fitnesBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fitnesBoxActionPerformed
-        if(!state[2])
-            state[2]= true;
-        else state[2] = false;
+        setstatus(2);
     }//GEN-LAST:event_fitnesBoxActionPerformed
 
     private void swimBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_swimBoxStateChanged
@@ -477,9 +753,7 @@ public class Filter extends javax.swing.JFrame {
     }//GEN-LAST:event_swimBoxStateChanged
 
     private void swimBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_swimBoxActionPerformed
-        if(!state[3])
-            state[3]= true;
-        else state[3] = false;
+        setstatus(3);
     }//GEN-LAST:event_swimBoxActionPerformed
 
     private void dzudoBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_dzudoBoxStateChanged
@@ -487,9 +761,7 @@ public class Filter extends javax.swing.JFrame {
     }//GEN-LAST:event_dzudoBoxStateChanged
 
     private void dzudoBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dzudoBoxActionPerformed
-        if(!state[8])
-            state[8]= true;
-        else state[8] = false;
+        setstatus(8);
     }//GEN-LAST:event_dzudoBoxActionPerformed
 
     private void fightBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_fightBoxStateChanged
@@ -497,9 +769,7 @@ public class Filter extends javax.swing.JFrame {
     }//GEN-LAST:event_fightBoxStateChanged
 
     private void fightBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fightBoxActionPerformed
-        if(!state[6])
-            state[6]= true;
-        else state[6] = false;
+        setstatus(6);
     }//GEN-LAST:event_fightBoxActionPerformed
 
     private void xokeyBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_xokeyBoxStateChanged
@@ -507,9 +777,7 @@ public class Filter extends javax.swing.JFrame {
     }//GEN-LAST:event_xokeyBoxStateChanged
 
     private void xokeyBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xokeyBoxActionPerformed
-        if(!state[5])
-            state[5]= true;
-        else state[5] = false;
+        setstatus(5);
     }//GEN-LAST:event_xokeyBoxActionPerformed
 
     private void zalBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_zalBoxStateChanged
@@ -517,9 +785,7 @@ public class Filter extends javax.swing.JFrame {
     }//GEN-LAST:event_zalBoxStateChanged
 
     private void zalBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zalBoxActionPerformed
-        if(!state[4])
-            state[4]= true;
-        else state[4] = false;
+        setstatus(4);
     }//GEN-LAST:event_zalBoxActionPerformed
 
     private void tekvondoBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tekvondoBoxStateChanged
@@ -527,9 +793,7 @@ public class Filter extends javax.swing.JFrame {
     }//GEN-LAST:event_tekvondoBoxStateChanged
 
     private void tekvondoBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tekvondoBoxActionPerformed
-        if(!state[12])
-            state[12]= true;
-        else state[12] = false;
+       setstatus(12);
     }//GEN-LAST:event_tekvondoBoxActionPerformed
 
     private void volleybalBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_volleybalBoxStateChanged
@@ -537,9 +801,7 @@ public class Filter extends javax.swing.JFrame {
     }//GEN-LAST:event_volleybalBoxStateChanged
 
     private void volleybalBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volleybalBoxActionPerformed
-        if(!state[11])
-            state[11]= true;
-        else state[11] = false;
+        setstatus(11);
     }//GEN-LAST:event_volleybalBoxActionPerformed
 
     private void lightBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_lightBoxStateChanged
@@ -547,9 +809,7 @@ public class Filter extends javax.swing.JFrame {
     }//GEN-LAST:event_lightBoxStateChanged
 
     private void lightBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lightBoxActionPerformed
-        if(!state[10])
-            state[10]= true;
-        else state[10] = false;
+        setstatus(10);
     }//GEN-LAST:event_lightBoxActionPerformed
 
     private void futtbolBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_futtbolBoxStateChanged
@@ -557,9 +817,7 @@ public class Filter extends javax.swing.JFrame {
     }//GEN-LAST:event_futtbolBoxStateChanged
 
     private void futtbolBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_futtbolBoxActionPerformed
-        if(!state[9])
-            state[9]= true;
-        else state[9] = false;
+        setstatus(9);
     }//GEN-LAST:event_futtbolBoxActionPerformed
 
     private void boksBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_boksBoxStateChanged
@@ -567,9 +825,7 @@ public class Filter extends javax.swing.JFrame {
     }//GEN-LAST:event_boksBoxStateChanged
 
     private void boksBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boksBoxActionPerformed
-        if(!state[7])
-            state[7]= true;
-        else state[7] = false;
+        setstatus(7);
     }//GEN-LAST:event_boksBoxActionPerformed
 
     private void jRadioButton500metrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton500metrActionPerformed
@@ -600,7 +856,25 @@ public class Filter extends javax.swing.JFrame {
             lightBox.setSelected(false);
             volleybalBox.setSelected(false);
             tekvondoBox.setSelected(false);
-            for (int i = 0; i < 12; i++) state[i] = false;
+            
+            rastBox.setSelected(false);
+            boulingBox.setSelected(false);
+            tennisBox.setSelected(false);
+            skalolBox.setSelected(false);
+            batutBox.setSelected(false);
+            pilatesBox.setSelected(false);
+            skeytBox.setSelected(false);
+            beachVolleyBox.setSelected(false);
+            dayvingBox.setSelected(false);
+            snowboardBox.setSelected(false);
+            arrowBox.setSelected(false);
+            chessBox.setSelected(false);
+            badmintonBox.setSelected(false);
+            katamrBox.setSelected(false);
+            rollerBox.setSelected(false);
+            regbyBox.setSelected(false);
+            
+            for (int i = 0; i < 28; i++) state[i] = false;
         }
         else 
         {
@@ -617,9 +891,172 @@ public class Filter extends javax.swing.JFrame {
             lightBox.setSelected(true);
             volleybalBox.setSelected(true);
             tekvondoBox.setSelected(true);
-            for (int i = 0; i < 12; i++) state[i] = true;
+            
+            
+            rastBox.setSelected(true);
+            boulingBox.setSelected(true);
+            tennisBox.setSelected(true);
+            skalolBox.setSelected(true);
+            batutBox.setSelected(true);
+            pilatesBox.setSelected(true);
+            skeytBox.setSelected(true);
+            beachVolleyBox.setSelected(true);
+            dayvingBox.setSelected(true);
+            snowboardBox.setSelected(true);
+            arrowBox.setSelected(true);
+            chessBox.setSelected(true);
+            badmintonBox.setSelected(true);
+            katamrBox.setSelected(true);
+            rollerBox.setSelected(true);
+            regbyBox.setSelected(true);
+            for (int i = 0; i < 28; i++) state[i] = true;
         }
     }//GEN-LAST:event_allCheckBoxActionPerformed
+
+    private void pilatesBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_pilatesBoxStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pilatesBoxStateChanged
+
+    private void pilatesBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pilatesBoxActionPerformed
+        // TODO add your handling code here:
+        setstatus(17);
+    }//GEN-LAST:event_pilatesBoxActionPerformed
+
+    private void badmintonBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_badmintonBoxStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_badmintonBoxStateChanged
+
+    private void badmintonBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_badmintonBoxActionPerformed
+        // TODO add your handling code here:
+        setstatus(25);
+    }//GEN-LAST:event_badmintonBoxActionPerformed
+
+    private void regbyBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_regbyBoxStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_regbyBoxStateChanged
+
+    private void regbyBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regbyBoxActionPerformed
+        // TODO add your handling code here:
+        setstatus(24);
+    }//GEN-LAST:event_regbyBoxActionPerformed
+
+    private void chessBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_chessBoxStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chessBoxStateChanged
+
+    private void chessBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chessBoxActionPerformed
+        // TODO add your handling code here:
+        setstatus(23);
+    }//GEN-LAST:event_chessBoxActionPerformed
+
+    private void arrowBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_arrowBoxStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_arrowBoxStateChanged
+
+    private void arrowBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arrowBoxActionPerformed
+        // TODO add your handling code here:
+        setstatus(22);
+    }//GEN-LAST:event_arrowBoxActionPerformed
+
+    private void dayvingBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_dayvingBoxStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dayvingBoxStateChanged
+
+    private void dayvingBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dayvingBoxActionPerformed
+        // TODO add your handling code here:
+        setstatus(20);
+    }//GEN-LAST:event_dayvingBoxActionPerformed
+
+    private void boulingBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_boulingBoxStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boulingBoxStateChanged
+
+    private void boulingBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boulingBoxActionPerformed
+        // TODO add your handling code here:
+        setstatus(13);
+    }//GEN-LAST:event_boulingBoxActionPerformed
+
+    private void tennisBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tennisBoxStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tennisBoxStateChanged
+
+    private void tennisBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tennisBoxActionPerformed
+        // TODO add your handling code here:
+        setstatus(14);
+    }//GEN-LAST:event_tennisBoxActionPerformed
+
+    private void skalolBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_skalolBoxStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_skalolBoxStateChanged
+
+    private void skalolBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skalolBoxActionPerformed
+        // TODO add your handling code here:
+        setstatus(15);
+    }//GEN-LAST:event_skalolBoxActionPerformed
+
+    private void batutBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_batutBoxStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_batutBoxStateChanged
+
+    private void batutBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_batutBoxActionPerformed
+        // TODO add your handling code here:
+        setstatus(16);
+    }//GEN-LAST:event_batutBoxActionPerformed
+
+    private void snowboardBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_snowboardBoxStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_snowboardBoxStateChanged
+
+    private void snowboardBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_snowboardBoxActionPerformed
+        // TODO add your handling code here:
+        setstatus(21);
+    }//GEN-LAST:event_snowboardBoxActionPerformed
+
+    private void beachVolleyBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_beachVolleyBoxStateChanged
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_beachVolleyBoxStateChanged
+
+    private void beachVolleyBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_beachVolleyBoxActionPerformed
+        // TODO add your handling code here:
+        setstatus(19);
+    }//GEN-LAST:event_beachVolleyBoxActionPerformed
+
+    private void skeytBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_skeytBoxStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_skeytBoxStateChanged
+
+    private void skeytBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skeytBoxActionPerformed
+        // TODO add your handling code here:
+        setstatus(18);
+    }//GEN-LAST:event_skeytBoxActionPerformed
+
+    private void katamrBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_katamrBoxStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_katamrBoxStateChanged
+
+    private void katamrBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_katamrBoxActionPerformed
+        // TODO add your handling code here:
+        setstatus(27);
+    }//GEN-LAST:event_katamrBoxActionPerformed
+
+    private void rollerBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rollerBoxStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rollerBoxStateChanged
+
+    private void rollerBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rollerBoxActionPerformed
+        // TODO add your handling code here:
+        setstatus(28);
+    }//GEN-LAST:event_rollerBoxActionPerformed
+
+    private void rastBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rastBoxStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rastBoxStateChanged
+
+    private void rastBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rastBoxActionPerformed
+        // TODO add your handling code here:
+        setstatus(26);
+    }//GEN-LAST:event_rastBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -658,7 +1095,15 @@ public class Filter extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox allCheckBox;
+    private javax.swing.JCheckBox arrowBox;
+    private javax.swing.JCheckBox badmintonBox;
+    private javax.swing.JCheckBox batutBox;
+    private javax.swing.JCheckBox beachVolleyBox;
     private javax.swing.JCheckBox boksBox;
+    private javax.swing.JCheckBox boulingBox;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JCheckBox chessBox;
+    private javax.swing.JCheckBox dayvingBox;
     private javax.swing.JCheckBox dzudoBox;
     private javax.swing.JCheckBox fightBox;
     private javax.swing.JCheckBox fitnesBox;
@@ -672,11 +1117,20 @@ public class Filter extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton500metr;
     private javax.swing.JRadioButton jRadioButton5km;
     private javax.swing.JRadioButton jRadioButtonall;
+    private javax.swing.JCheckBox katamrBox;
     private javax.swing.JCheckBox katokBox;
     private javax.swing.JCheckBox lightBox;
+    private javax.swing.JCheckBox pilatesBox;
     private javax.swing.ButtonGroup radiusGroup;
+    private javax.swing.JCheckBox rastBox;
+    private javax.swing.JCheckBox regbyBox;
+    private javax.swing.JCheckBox rollerBox;
+    private javax.swing.JCheckBox skalolBox;
+    private javax.swing.JCheckBox skeytBox;
+    private javax.swing.JCheckBox snowboardBox;
     private javax.swing.JCheckBox swimBox;
     private javax.swing.JCheckBox tekvondoBox;
+    private javax.swing.JCheckBox tennisBox;
     private javax.swing.JCheckBox volleybalBox;
     private javax.swing.JCheckBox xokeyBox;
     private javax.swing.JCheckBox yogaBox;
